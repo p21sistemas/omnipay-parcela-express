@@ -1,0 +1,7 @@
+version: '3'
+services:
+  omnipay-parcela-express:
+    build:
+      context: ./
+    volumes:
+      - ./:/usr/src/omnipay-parcela-express
