@@ -141,18 +141,18 @@ class Billet
     }
 
     /**
-     * @return \Omnipay\ParcelaExpress\Support\SplitRule[]
+     * @return \Omnipay\ParcelaExpress\Support\SplitRule[]|null
      */
-    public function getSplitRules(): array
+    public function getSplitRules(): array|null
     {
         return $this->getParameter('splitRules');
     }
 
     /**
-     * @param \Omnipay\ParcelaExpress\Support\SplitRule[] $value
+     * @param \Omnipay\ParcelaExpress\Support\SplitRule[]|null $value
      * @return $this
      */
-    public function setSplitRules(array $value): static
+    public function setSplitRules(array|null $value): static
     {
         return $this->setParameter('splitRules', $value);
     }
