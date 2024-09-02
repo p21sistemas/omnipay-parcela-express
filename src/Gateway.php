@@ -11,6 +11,7 @@ use Omnipay\ParcelaExpress\Message\GetSaleRequest;
 use Omnipay\ParcelaExpress\Message\LoginRequest;
 use Omnipay\ParcelaExpress\Message\PaymentCardRequest;
 use Omnipay\ParcelaExpress\Message\PaymentPixRequest;
+use Omnipay\ParcelaExpress\Message\SimulationRequest;
 
 /**
  * @package Omnipay\ParcelaExpress
@@ -233,5 +234,14 @@ class Gateway extends AbstractGateway
     public function getSale(): GetSaleRequest|AbstractRequest
     {
         return $this->createTransparentRequest(GetSaleRequest::class, []);
+    }
+
+    /**
+     * @return SimulationRequest|AbstractRequest
+     * @throws \Exception
+     */
+    public function simulation(): SimulationRequest|AbstractRequest
+    {
+        return $this->createTransparentRequest(SimulationRequest::class, []);
     }
 }
