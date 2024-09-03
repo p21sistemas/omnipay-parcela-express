@@ -10,6 +10,14 @@ class GetSellerRequest extends AbstractRequest
 {
 
     /**
+     * @return int
+     */
+    protected function getVersion(): int
+    {
+        return '1';
+    }
+
+    /**
      * @param $value
      * @return static
      */

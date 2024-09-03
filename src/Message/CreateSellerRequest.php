@@ -13,6 +13,14 @@ class CreateSellerRequest extends AbstractRequest
 {
 
     /**
+     * @return int
+     */
+    protected function getVersion(): int
+    {
+        return '1';
+    }
+
+    /**
      * @return string
      */
     protected function getMethod(): string
@@ -437,11 +445,11 @@ class CreateSellerRequest extends AbstractRequest
             'type_account'   => $bankAccount->getTypeAccount(),
         ];
 
-        if ($bankAccount->getAgencyDigit()) {
+        if ($bankAccount->getAgencyDigit() !== null && $bankAccount->getAgencyDigit() !== '') {
             $addressData['agency_digit'] = $bankAccount->getAgencyDigit();
         }
 
-        if ($bankAccount->getAccountDigit()) {
+        if ($bankAccount->getAccountDigit() !== null && $bankAccount->getAccountDigit() !== '') {
             $addressData['account_digit'] = $bankAccount->getAccountDigit();
         }
 

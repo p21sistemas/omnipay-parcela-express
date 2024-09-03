@@ -41,4 +41,16 @@ class PatchSellerRequest extends CreateSellerRequest
     {
         return "sellers/{$this->getPatchSellerId()}";
     }
+
+    /**
+     * @return array
+     */
+    public function getData(): array
+    {
+        $data = parent::getData();
+        unset($data['is_assignor']);
+        unset($data['acquirer']);
+
+        return $data;
+    }
 }
