@@ -6,9 +6,12 @@ use DateTime;
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Message\AbstractRequest;
 use Omnipay\ParcelaExpress\Message\CreateBilletsRequest;
+use Omnipay\ParcelaExpress\Message\CreateSellerRequest;
 use Omnipay\ParcelaExpress\Message\GetBilletRequest;
 use Omnipay\ParcelaExpress\Message\GetSaleRequest;
+use Omnipay\ParcelaExpress\Message\GetSellerRequest;
 use Omnipay\ParcelaExpress\Message\LoginRequest;
+use Omnipay\ParcelaExpress\Message\PatchSellerRequest;
 use Omnipay\ParcelaExpress\Message\PaymentCardRequest;
 use Omnipay\ParcelaExpress\Message\PaymentPixRequest;
 use Omnipay\ParcelaExpress\Message\SimulationRequest;
@@ -243,5 +246,32 @@ class Gateway extends AbstractGateway
     public function simulation(): SimulationRequest|AbstractRequest
     {
         return $this->createTransparentRequest(SimulationRequest::class, []);
+    }
+
+    /**
+     * @return CreateSellerRequest|AbstractRequest
+     * @throws \Exception
+     */
+    public function createSeller(): CreateSellerRequest|AbstractRequest
+    {
+        return $this->createTransparentRequest(CreateSellerRequest::class, []);
+    }
+
+    /**
+     * @return PatchSellerRequest|AbstractRequest
+     * @throws \Exception
+     */
+    public function patchSeller(): PatchSellerRequest|AbstractRequest
+    {
+        return $this->createTransparentRequest(PatchSellerRequest::class, []);
+    }
+
+    /**
+     * @return GetSellerRequest|AbstractRequest
+     * @throws \Exception
+     */
+    public function getSeller(): GetSellerRequest|AbstractRequest
+    {
+        return $this->createTransparentRequest(GetSellerRequest::class, []);
     }
 }
