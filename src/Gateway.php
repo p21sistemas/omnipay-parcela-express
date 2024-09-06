@@ -14,7 +14,10 @@ use Omnipay\ParcelaExpress\Message\LoginRequest;
 use Omnipay\ParcelaExpress\Message\PatchSellerRequest;
 use Omnipay\ParcelaExpress\Message\PaymentCardRequest;
 use Omnipay\ParcelaExpress\Message\PaymentPixRequest;
+use Omnipay\ParcelaExpress\Message\SimulateBilletPaymentRequest;
+use Omnipay\ParcelaExpress\Message\SimulatePixPaymentRequest;
 use Omnipay\ParcelaExpress\Message\SimulationRequest;
+use RuntimeException;
 
 /**
  * @package Omnipay\ParcelaExpress
@@ -273,5 +276,31 @@ class Gateway extends AbstractGateway
     public function getSeller(): GetSellerRequest|AbstractRequest
     {
         return $this->createTransparentRequest(GetSellerRequest::class, []);
+    }
+
+    /**
+     * @return SimulatePixPaymentRequest|AbstractRequest
+     * @throws \Exception
+     */
+    public function simulatePixPayment(): SimulatePixPaymentRequest|AbstractRequest
+    {
+        if (!$this->getTestMode()) {
+            throw new RuntimeException('Request only available in test mode.');
+        }
+
+        return $this->createTransparentRequest(SimulatePixPaymentRequest::class, []);
+    }
+
+    /**
+     * @return SimulateBilletPaymentRequest|AbstractRequest
+     * @throws \Exception
+     */
+    public function simulateBilletPayment(): SimulateBilletPaymentRequest|AbstractRequest
+    {
+        if (!$this->getTestMode()) {
+            throw new RuntimeException('Request only available in test mode.');
+        }
+
+        return $this->createTransparentRequest(SimulateBilletPaymentRequest::class, []);
     }
 }

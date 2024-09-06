@@ -6,7 +6,7 @@ namespace Omnipay\ParcelaExpress\Message;
  * @package Omnipay\ParcelaExpress\Message
  * @author Thiago Daher
  */
-class GetSaleRequest extends AbstractRequest
+class SimulatePixPaymentRequest extends AbstractRequest
 {
 
     /**
@@ -14,7 +14,7 @@ class GetSaleRequest extends AbstractRequest
      */
     protected function getMethod(): string
     {
-        return 'GET';
+        return 'POST';
     }
 
     /**
@@ -48,7 +48,7 @@ class GetSaleRequest extends AbstractRequest
      */
     protected function getResource(): string
     {
-        return "sellers/{$this->getSellerId()}/sales/{$this->getSaleId()}";
+        return "sales/{$this->getSaleId()}/pix/pay";
     }
 
     /**

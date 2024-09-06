@@ -6,7 +6,7 @@ namespace Omnipay\ParcelaExpress\Message;
  * @package Omnipay\ParcelaExpress\Message
  * @author Thiago Daher
  */
-class GetSaleRequest extends AbstractRequest
+class SimulateBilletPaymentRequest extends AbstractRequest
 {
 
     /**
@@ -14,7 +14,24 @@ class GetSaleRequest extends AbstractRequest
      */
     protected function getMethod(): string
     {
-        return 'GET';
+        return 'POST';
+    }
+
+    /**
+     * @param $value
+     * @return static
+     */
+    public function setBilletId($value): static
+    {
+        return $this->setParameter('billetId', $value);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBilletId(): mixed
+    {
+        return $this->getParameter('billetId');
     }
 
     /**
@@ -26,29 +43,11 @@ class GetSaleRequest extends AbstractRequest
     }
 
     /**
-     * @param $value
-     * @return static
-     */
-    public function setSaleId($value): static
-    {
-        return $this->setParameter('saleId', $value);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSaleId(): mixed
-    {
-        return $this->getParameter('saleId');
-    }
-
-
-    /**
      * @return string
      */
     protected function getResource(): string
     {
-        return "sellers/{$this->getSellerId()}/sales/{$this->getSaleId()}";
+        return "billets/{$this->getBilletId()}/pay";
     }
 
     /**
