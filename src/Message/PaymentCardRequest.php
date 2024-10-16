@@ -48,6 +48,58 @@ class PaymentCardRequest extends AbstractPaymentRequest
      * @param $value
      * @return static
      */
+    public function setActive3ds($value): static
+    {
+        return $this->setParameter('active3ds', $value);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActive3ds(): mixed
+    {
+        return $this->getParameter('active3ds');
+    }
+
+    /**
+     * @param $value
+     * @return static
+     */
+    public function setSuccessReturnUrl($value): static
+    {
+        return $this->setParameter('successReturnUrl', $value);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSuccessReturnUrl(): mixed
+    {
+        return $this->getParameter('successReturnUrl');
+    }
+
+    /**
+     * @param $value
+     * @return static
+     */
+    public function setErrorReturnUrl($value): static
+    {
+        return $this->setParameter('errorReturnUrl', $value);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getErrorReturnUrl(): mixed
+    {
+        return $this->getParameter('errorReturnUrl');
+    }
+
+
+    /**
+     * @param $value
+     * @return static
+     */
     public function setNumberInstallments($value): static
     {
         return $this->setParameter('numberInstallments', $value);
@@ -82,6 +134,12 @@ class PaymentCardRequest extends AbstractPaymentRequest
         ];
 
         $data['form_payment'] = 'credit';
+
+        if ($this->getActive3ds()) {
+            $data['active_3ds']         = true;
+            $data['success_return_url'] = $this->getSuccessReturnUrl();
+            $data['error_return_url']   = $this->getErrorReturnUrl();
+        }
 
         return $data;
     }
