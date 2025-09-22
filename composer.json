@@ -1,6 +1,6 @@
 {
   "name": "p21sistemas/omnipay-parcela-express",
-  "version" : "1.0.3",
+  "version" : "1.0.4",
   "description": "Driver do Parcela Express para o Omnipay.",
   "type": "library",
   "keywords": [

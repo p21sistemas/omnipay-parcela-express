@@ -17,6 +17,7 @@ use Omnipay\ParcelaExpress\Message\PaymentPixRequest;
 use Omnipay\ParcelaExpress\Message\SimulateBilletPaymentRequest;
 use Omnipay\ParcelaExpress\Message\SimulatePixPaymentRequest;
 use Omnipay\ParcelaExpress\Message\SimulationRequest;
+use Omnipay\ParcelaExpress\Message\VoidBilletRequest;
 use RuntimeException;
 
 /**
@@ -231,6 +232,15 @@ class Gateway extends AbstractGateway
     public function getBillet(): GetBilletRequest|AbstractRequest
     {
         return $this->createTransparentRequest(GetBilletRequest::class, []);
+    }
+
+    /**
+     * @return \Omnipay\ParcelaExpress\Message\VoidBilletRequest|\Omnipay\Common\Message\AbstractRequest
+     * @throws \Exception
+     */
+    public function voidBillet(): VoidBilletRequest|AbstractRequest
+    {
+        return $this->createTransparentRequest(VoidBilletRequest::class, []);
     }
 
     /**
